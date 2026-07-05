@@ -1,0 +1,8 @@
+{
+  "name": "pizzeria-oleander",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^25.3.0"
+  }
+}

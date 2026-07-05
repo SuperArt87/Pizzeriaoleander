@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzeria Oleander</title>
+<meta name="description" content="Pizzeria Oleander — traditionele Napolitaanse pizza om af te halen, elke vrijdag in Leusden.">
+<link rel="icon" href="Brand%20Assets/Logo%20Pizzeria%20Oleander.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#241e1b',
+          'ink-soft': '#4a4038',
+          cream: '#fbf4ea',
+          'cream-soft': '#f3e8d8',
+          'cream-deep': '#ead9bd',
+          pink: '#e6aec1',
+          'pink-deep': '#b96c86',
+          'pink-pale': '#f8e3ea',
+          terracotta: '#c1602e',
+          'terracotta-deep': '#9c4a20',
+          olive: '#4b5d3a'
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['Manrope', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-cream text-ink antialiased">
+
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-cream/95 backdrop-blur-md border-b border-ink/5">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-[76px] flex items-center justify-between gap-4">
+      <a href="#hero" class="flex items-center gap-3 shrink-0">
+        <img src="Brand%20Assets/Logo%20Pizzeria%20Oleander.png" alt="Pizzeria Oleander" class="h-14 w-14 object-contain">
+        <span class="hidden sm:block font-display text-lg tracking-tight text-ink">Pizzeria Oleander</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-soft">
+        <a href="#menu" class="nav-link" data-i18n="nav.menu">Menu</a>
+        <a href="#hours" class="nav-link" data-i18n="nav.hours">Openingstijden</a>
+        <a href="#reviews" class="nav-link" data-i18n="nav.reviews">Reviews</a>
+        <a href="#footer" class="nav-link" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button type="button" data-lang-toggle aria-label="Switch language"
+          class="h-9 px-3 rounded-full border border-ink/15 text-xs font-bold tracking-wide hover:bg-pink-pale hover:border-pink-deep/40 transition-colors duration-150">
+          <span data-lang-label>EN</span>
+        </button>
+        <a href="#menu"
+          class="hidden sm:inline-flex items-center h-9 px-4 rounded-full bg-terracotta text-white text-sm font-semibold shadow-btn hover:bg-terracotta-deep transition-colors duration-150"
+          data-i18n="nav.order">Bestellen</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="relative overflow-hidden grain min-h-[100svh] pb-36 md:pb-48">
+    <video class="hero-video" autoplay muted loop playsinline
+      poster="Brand%20Assets/Logo%20Pizzeria%20Oleander.png">
+      <source src="Brand%20Assets/13111090_2160_3840_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-terracotta/20 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/25 to-ink/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent"></div>
+
+    <div class="relative z-10 h-full min-h-[100svh] flex flex-col items-center justify-center text-center px-6 pt-[76px]">
+      <span class="animate-rise inline-block text-[11px] md:text-xs uppercase tracking-[0.2em] font-semibold text-pink-pale/90 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm"
+        data-i18n="hero.eyebrow">Napolitaanse pizza · Afhalen · Leusden</span>
+
+      <h1 class="animate-rise delay-1 font-display text-white text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-medium tracking-[-0.02em] max-w-3xl"
+        data-i18n="hero.title">Vuur, deeg en<br>tijd van 48 uur.</h1>
+
+      <p class="animate-rise delay-2 mt-6 max-w-lg text-base md:text-lg text-cream/85 leading-[1.7]"
+        data-i18n="hero.subtitle">Elke vrijdag bakken wij authentieke Napolitaanse pizza’s op traditionele wijze. Uitsluitend om af te halen.</p>
+
+      <div class="animate-rise delay-3 mt-9 flex flex-wrap items-center justify-center gap-4">
+        <a href="#menu" class="inline-flex items-center h-12 px-7 rounded-full bg-terracotta text-white font-semibold shadow-btn hover:bg-terracotta-deep hover:-translate-y-0.5 transition-[transform,background-color] duration-200"
+          data-i18n="hero.cta">Bekijk het menu</a>
+        <a href="#hours" class="inline-flex items-center h-12 px-7 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 hover:-translate-y-0.5 transition-[transform,background-color] duration-200"
+          data-i18n="hero.cta2">Openingstijden</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu section, floating over hero -->
+  <section id="menu" class="relative z-20 -mt-32 md:-mt-44 px-4 md:px-8 scroll-mt-24">
+    <div class="max-w-6xl mx-auto bg-cream rounded-[2rem] shadow-float grain px-5 sm:px-8 md:px-14 py-12 md:py-16">
+
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-[0.2em] font-bold text-terracotta" data-i18n="menu.eyebrow">Ons menu</span>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl font-medium tracking-[-0.01em]" data-i18n="menu.title">Vijf pizza’s, puur gehouden</h2>
+        <p class="mt-4 text-ink-soft leading-[1.7]" data-i18n="menu.subtitle">Traditioneel gerezen deeg (48 uur), San Marzano tomaten en verse mozzarella — meer heeft een goede pizza niet nodig.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8 lg:gap-10 items-start">
+        <div id="pizza-grid" class="lg:col-span-2 grid sm:grid-cols-2 gap-5"></div>
+
+        <!-- Order summary / total price calculator -->
+        <aside class="lg:sticky lg:top-[100px] bg-white rounded-2xl shadow-card border border-cream-deep p-6 md:p-7">
+          <h3 class="font-display text-xl font-medium" data-i18n="menu.summary.title">Jouw bestelling</h3>
+          <div class="rule-line my-4 text-ink"></div>
+
+          <p id="order-summary-empty" class="text-sm text-ink-soft leading-relaxed" data-i18n="menu.summary.empty">
+            Nog niets geselecteerd. Kies hierboven je pizza’s.
+          </p>
+          <ul id="order-summary-list" class="divide-y divide-cream-deep/60"></ul>
+
+          <div class="rule-line my-4 text-ink"></div>
+
+          <div class="flex items-baseline justify-between mb-6">
+            <span class="text-sm font-semibold uppercase tracking-wide text-ink-soft" data-i18n="menu.summary.total">Totaal</span>
+            <span id="order-total" class="font-display text-2xl font-semibold text-terracotta-deep">€ 0,00</span>
+          </div>
+
+          <a id="order-cta" href="bestellen.html"
+            class="pointer-events-none opacity-40 flex items-center justify-center h-12 w-full rounded-full bg-terracotta text-white font-semibold shadow-btn hover:bg-terracotta-deep hover:-translate-y-0.5 transition-[transform,background-color,opacity] duration-200"
+            data-i18n="menu.summary.cta" aria-disabled="true">Bestellen</a>
+
+          <p class="mt-4 text-xs text-center text-ink-soft leading-relaxed" data-i18n="menu.summary.note">
+            Afhalen uitsluitend op vrijdag tussen 17:00–19:00
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opening hours & address -->
+  <section id="hours" class="max-w-6xl mx-auto px-4 md:px-8 py-24 md:py-32 scroll-mt-24">
+    <div class="text-center max-w-xl mx-auto mb-14">
+      <span class="text-xs uppercase tracking-[0.2em] font-bold text-terracotta" data-i18n="hours.eyebrow">Praktisch</span>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-medium tracking-[-0.01em]" data-i18n="hours.title">Openingstijden &amp; adres</h2>
+      <p class="mt-4 text-ink-soft leading-[1.7]" data-i18n="hours.subtitle">We bakken maar één dag per week — zo houden we het vers en persoonlijk.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Hours card -->
+      <div class="bg-white rounded-2xl shadow-card border border-cream-deep p-7 md:p-9">
+        <h3 class="font-display text-xl font-medium mb-5">Openingstijden</h3>
+        <ul class="text-sm divide-y divide-cream-deep/60">
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.mon">Maandag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.tue">Dinsdag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.wed">Woensdag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.thu">Donderdag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+          <li class="flex items-center justify-between py-3 rounded-lg px-3 -mx-3 bg-pink-pale/60">
+            <span class="font-semibold" data-i18n="hours.day.fri">Vrijdag</span>
+            <span class="font-semibold text-terracotta-deep" data-i18n="hours.friday.time">17:00 – 19:00</span>
+          </li>
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.sat">Zaterdag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+          <li class="flex items-center justify-between py-2.5"><span data-i18n="hours.day.sun">Zondag</span><span class="text-ink-soft" data-i18n="hours.closed">Gesloten</span></li>
+        </ul>
+        <p class="mt-5 text-xs text-ink-soft" data-i18n="hours.only">Alleen op vrijdag geopend, uitsluitend voor afhalen</p>
+      </div>
+
+      <!-- Address card -->
+      <div class="bg-white rounded-2xl shadow-card border border-cream-deep p-7 md:p-9 flex flex-col">
+        <h3 class="font-display text-xl font-medium mb-5" data-i18n="address.title">Adres</h3>
+        <div class="flex items-start gap-3 mb-4">
+          <span class="mt-1 h-2 w-2 rounded-full bg-terracotta shrink-0"></span>
+          <p class="text-sm leading-relaxed">
+            <span data-i18n="address.line1">Hamershof 12</span><br>
+            <span data-i18n="address.line2">3831 EX Leusden</span>
+          </p>
+        </div>
+        <div class="flex items-start gap-3 mb-6">
+          <span class="mt-1 h-2 w-2 rounded-full bg-terracotta shrink-0"></span>
+          <p class="text-sm">
+            <span data-i18n="address.phone">Telefoon</span>: <a href="tel:+31331234567" class="hover:text-terracotta-deep underline underline-offset-2">033 123 45 67</a>
+          </p>
+        </div>
+        <div class="mt-auto rounded-xl overflow-hidden border border-cream-deep aspect-[16/9] bg-cream-soft flex items-center justify-center">
+          <img src="https://placehold.co/640x360/f3e8d8/9c4a20?text=Kaart+%2F+Map" alt="Kaart" class="w-full h-full object-cover">
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hamershof+12+Leusden" target="_blank" rel="noopener"
+          class="mt-5 inline-flex self-start items-center gap-1.5 text-sm font-semibold text-terracotta-deep hover:text-terracotta transition-colors duration-150">
+          <span data-i18n="address.directions">Routebeschrijving</span> <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-cream-soft py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-[0.2em] font-bold text-terracotta" data-i18n="reviews.eyebrow">Wat gasten zeggen</span>
+        <h2 class="mt-3 font-display text-3xl md:text-4xl font-medium tracking-[-0.01em]" data-i18n="reviews.title">Beoordeeld door de buurt</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <figure class="bg-white rounded-2xl shadow-card border border-cream-deep p-7">
+          <div class="stars text-lg mb-4">★★★★★</div>
+          <blockquote class="text-sm leading-relaxed text-ink-soft">“De beste pizza die ik in Nederland heb gegeten. De bodem is precies zoals in Napels — luchtig met een krokante rand.”</blockquote>
+          <figcaption class="mt-5 text-sm font-semibold">— Marieke V., Leusden</figcaption>
+        </figure>
+        <figure class="bg-white rounded-2xl shadow-card border border-cream-deep p-7">
+          <div class="stars text-lg mb-4">★★★★★</div>
+          <blockquote class="text-sm leading-relaxed text-ink-soft">“Klein, vriendelijk en de Diavola is heerlijk pittig. Elke vrijdag sta ik weer in de rij.”</blockquote>
+          <figcaption class="mt-5 text-sm font-semibold">— Tom B., Amersfoort</figcaption>
+        </figure>
+        <figure class="bg-white rounded-2xl shadow-card border border-cream-deep p-7">
+          <div class="stars text-lg mb-4">★★★★★</div>
+          <blockquote class="text-sm leading-relaxed text-ink-soft">“Bestellen ging supersnel en de pizza was nog warm bij thuiskomst. Absolute aanrader.”</blockquote>
+          <figcaption class="mt-5 text-sm font-semibold">— Sanne K., Leusden</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="bg-ink text-cream/80">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-16 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="Brand%20Assets/Logo%20Pizzeria%20Oleander.png" alt="Pizzeria Oleander" class="h-12 w-12 object-contain bg-cream rounded-full p-1">
+          <span class="font-display text-lg text-white">Pizzeria Oleander</span>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs" data-i18n="footer.tagline">Napolitaanse pizza, traditioneel gebakken. Elke vrijdag vers in Leusden.</p>
+      </div>
+
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-pink mb-4" data-i18n="footer.links">Snel naar</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#menu" class="hover:text-white transition-colors duration-150" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#hours" class="hover:text-white transition-colors duration-150" data-i18n="nav.hours">Openingstijden</a></li>
+          <li><a href="#reviews" class="hover:text-white transition-colors duration-150" data-i18n="nav.reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-pink mb-4" data-i18n="footer.contact">Contact</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><span data-i18n="address.line1">Hamershof 12</span>, <span data-i18n="address.line2">3831 EX Leusden</span></li>
+          <li><a href="tel:+31331234567" class="hover:text-white transition-colors duration-150">033 123 45 67</a></li>
+          <li><a href="mailto:info@pizzeriaoleander.nl" class="hover:text-white transition-colors duration-150">info@pizzeriaoleander.nl</a></li>
+        </ul>
+        <div class="flex items-center gap-3 mt-5">
+          <a href="#" aria-label="Instagram" class="h-9 w-9 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition-colors duration-150">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="h-9 w-9 rounded-full border border-cream/20 flex items-center justify-center hover:bg-cream/10 transition-colors duration-150">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v6h3v-6h2.2L17 12h-3v-1.6c0-.6.3-1 1-1H17V8z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-cream/10">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
+        <span>© 2026 Pizzeria Oleander. <span data-i18n="footer.rights">Alle rechten voorbehouden.</span></span>
+        <span>Leusden, Nederland</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/menu.js"></script>
+</body>
+</html>
