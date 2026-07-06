@@ -3,51 +3,51 @@
 export const PIZZAS = [
   {
     id: 'margherita',
-    price: 11.5,
+    price: 10,
     name: { nl: 'Margherita', en: 'Margherita' },
     desc: {
-      nl: 'San Marzano tomaat, fior di latte mozzarella, verse basilicum, olijfolie',
-      en: 'San Marzano tomato, fior di latte mozzarella, fresh basil, olive oil'
+      nl: 'Beste tomatensaus, mozzarella, basilicum',
+      en: 'Finest tomato sauce, mozzarella, basil'
     },
     tag: { nl: 'Vegetarisch', en: 'Vegetarian' }
   },
   {
-    id: 'marinara',
-    price: 9.5,
-    name: { nl: 'Marinara', en: 'Marinara' },
+    id: 'salami-tartufo',
+    price: 12,
+    name: { nl: 'Salami Tartufo', en: 'Salami Tartufo' },
     desc: {
-      nl: 'San Marzano tomaat, knoflook, oregano, extra vergine olijfolie',
-      en: 'San Marzano tomato, garlic, oregano, extra virgin olive oil'
-    },
-    tag: { nl: 'Vegan', en: 'Vegan' }
-  },
-  {
-    id: 'diavola',
-    price: 13.5,
-    name: { nl: 'Diavola', en: 'Diavola' },
-    desc: {
-      nl: 'Tomaat, mozzarella, pittige salami, verse chilipeper',
-      en: 'Tomato, mozzarella, spicy salami, fresh chilli'
-    },
-    tag: { nl: 'Pittig', en: 'Spicy' }
-  },
-  {
-    id: 'prosciutto-funghi',
-    price: 13.0,
-    name: { nl: 'Prosciutto e Funghi', en: 'Prosciutto e Funghi' },
-    desc: {
-      nl: 'Tomaat, mozzarella, gekookte ham, champignons',
-      en: 'Tomato, mozzarella, cooked ham, mushrooms'
+      nl: 'Beste tomatensaus, mozzarella, salami tartufo',
+      en: 'Finest tomato sauce, mozzarella, truffle salami'
     },
     tag: { nl: 'Favoriet', en: 'Favourite' }
   },
   {
+    id: 'caprese-speciale',
+    price: 12,
+    name: { nl: 'Caprese Speciale', en: 'Caprese Speciale' },
+    desc: {
+      nl: 'Pesto, gemarineerde tomaatjes, mozzarella, balsamico',
+      en: 'Pesto, marinated cherry tomatoes, mozzarella, balsamic'
+    },
+    tag: { nl: 'Special', en: 'Special' }
+  },
+  {
+    id: 'prosciutto-nduja',
+    price: 13,
+    name: { nl: 'Prosciutto & Nduja', en: 'Prosciutto & Nduja' },
+    desc: {
+      nl: 'Beste tomatensaus, mozzarella, parmaham, nduja',
+      en: 'Finest tomato sauce, mozzarella, Parma ham, nduja'
+    },
+    tag: { nl: 'Pittig', en: 'Spicy' }
+  },
+  {
     id: 'quattro-formaggi',
-    price: 13.5,
+    price: 13,
     name: { nl: 'Quattro Formaggi', en: 'Quattro Formaggi' },
     desc: {
-      nl: 'Mozzarella, gorgonzola, parmigiano reggiano, taleggio',
-      en: 'Mozzarella, gorgonzola, parmigiano reggiano, taleggio'
+      nl: 'Mozzarella, gorgonzola, fontina of taleggio, parmigiano reggiano',
+      en: 'Mozzarella, gorgonzola, fontina or taleggio, parmigiano reggiano'
     },
     tag: { nl: 'Vegetarisch', en: 'Vegetarian' }
   }
@@ -62,12 +62,12 @@ export const translations = {
     'nav.contact': 'Contact',
     'nav.order': 'Bestellen',
     'hero.eyebrow': 'Napolitaanse pizza · Afhalen · Leusden',
-    'hero.title': 'Vuur, deeg en \ntijd van 48 uur.',
+    'hero.title': 'Authentieke Napolitaanse pizza’s in Leusden. \nHandgemaakt en versgebakken!',
     'hero.subtitle': 'Elke vrijdag bakken wij authentieke Napolitaanse pizza’s op traditionele wijze. Uitsluitend om af te halen.',
     'hero.cta': 'Bekijk het menu',
     'hero.cta2': 'Openingstijden',
     'menu.eyebrow': 'Ons menu',
-    'menu.title': 'Vijf pizza’s, puur gehouden',
+    'menu.title': 'Huisgemaakt en traditioneel gerezen deeg en authentieke ingrediënten.',
     'menu.subtitle': 'Traditioneel gerezen deeg (48 uur), San Marzano tomaten en verse mozzarella — meer heeft een goede pizza niet nodig.',
     'menu.qty': 'Aantal',
     'menu.summary.title': 'Jouw bestelling',
@@ -85,12 +85,25 @@ export const translations = {
     'hours.friday.time': '17:00 – 19:00',
     'hours.only': 'Alleen op vrijdag geopend, uitsluitend voor afhalen',
     'address.title': 'Adres',
-    'address.line1': 'Hamershof 12',
-    'address.line2': '3831 EX Leusden',
+    'address.line1': 'Wilhelmina van Pruisenlaan 8',
+    'address.line2': '3832 CH Leusden',
     'address.directions': 'Routebeschrijving',
     'address.phone': 'Telefoon',
     'reviews.eyebrow': 'Wat gasten zeggen',
     'reviews.title': 'Beoordeeld door de buurt',
+    'story.eyebrow': 'Ons verhaal',
+    'story.title': 'Het Verhaal',
+    'story.intro': 'Onze liefde voor Italië begon niet in een keuken, maar op reis: de geur van houtvuur, de rust van een dorpsplein, en pizza zoals die daar al generaties lang wordt gemaakt. Die verwondering namen we mee terug naar Leusden — met dezelfde intentie: geen shortcuts, geen compromissen.',
+    'story.feature1.stat': '48 uur',
+    'story.feature1.title': 'Rijstijd',
+    'story.feature1.desc': 'Ons deeg rijst minimaal 48 uur op traditionele Napolitaanse wijze. Dat maakt het luchtig, licht verteerbaar en vol smaak.',
+    'story.feature2.stat': '485°C',
+    'story.feature2.title': 'Houtoven',
+    'story.feature2.desc': 'In een oven van 485°C bakt onze pizza in nog geen 90 seconden — met een krokante bodem en een zachte, luchtige rand, de cornicione.',
+    'story.feature3.stat': 'Met de hand',
+    'story.feature3.title': 'Geen deegroller',
+    'story.feature3.desc': 'Elke bodem wordt met de hand uitgerekt, nooit met een deegroller. Zo blijft de luchtigheid van het deeg behouden.',
+    'story.closing': 'Voor ons is pizza geen fastfood, maar ambacht — een eerbetoon aan Napels en aan alles wat de Italiaanse keuken zo bijzonder maakt: eenvoud, geduld en de beste ingrediënten.',
     'footer.tagline': 'Napolitaanse pizza, traditioneel gebakken. Elke vrijdag vers in Leusden.',
     'footer.links': 'Snel naar',
     'footer.contact': 'Contact',
@@ -129,12 +142,12 @@ export const translations = {
     'nav.contact': 'Contact',
     'nav.order': 'Order',
     'hero.eyebrow': 'Neapolitan pizza · Takeaway · Leusden',
-    'hero.title': 'Fire, dough and \n48 hours of time.',
+    'hero.title': 'Authentic Neapolitan pizzas in Leusden. \nHandmade and freshly baked!',
     'hero.subtitle': 'Every Friday we bake authentic Neapolitan pizzas the traditional way. Takeaway only.',
     'hero.cta': 'View the menu',
     'hero.cta2': 'Opening hours',
     'menu.eyebrow': 'Our menu',
-    'menu.title': 'Five pizzas, kept honest',
+    'menu.title': 'Homemade, traditionally risen dough and authentic ingredients.',
     'menu.subtitle': 'A 48-hour slow-risen dough, San Marzano tomatoes and fresh mozzarella — a good pizza doesn’t need more.',
     'menu.qty': 'Quantity',
     'menu.summary.title': 'Your order',
@@ -152,12 +165,25 @@ export const translations = {
     'hours.friday.time': '17:00 – 19:00',
     'hours.only': 'Open Fridays only, takeaway only',
     'address.title': 'Address',
-    'address.line1': 'Hamershof 12',
-    'address.line2': '3831 EX Leusden',
+    'address.line1': 'Wilhelmina van Pruisenlaan 8',
+    'address.line2': '3832 CH Leusden',
     'address.directions': 'Get directions',
     'address.phone': 'Phone',
     'reviews.eyebrow': 'What guests say',
     'reviews.title': 'Rated by the neighbourhood',
+    'story.eyebrow': 'Our story',
+    'story.title': 'The Story',
+    'story.intro': 'Our love for Italy didn’t start in a kitchen, but on the road: the smell of wood fire, the calm of a village square, and pizza made the way it has been for generations. We brought that wonder back to Leusden — with the same intent: no shortcuts, no compromises.',
+    'story.feature1.stat': '48 hours',
+    'story.feature1.title': 'Rise time',
+    'story.feature1.desc': 'Our dough rises for at least 48 hours the traditional Neapolitan way. That’s what makes it light, easy to digest, and full of flavour.',
+    'story.feature2.stat': '485°C',
+    'story.feature2.title': 'Wood-fired oven',
+    'story.feature2.desc': 'Baked in an oven of 485°C in under 90 seconds, with a crisp base and a soft, airy rim — the cornicione.',
+    'story.feature3.stat': 'By hand',
+    'story.feature3.title': 'No rolling pin',
+    'story.feature3.desc': 'Every base is stretched by hand, never with a rolling pin, so the dough keeps its lightness.',
+    'story.closing': 'To us, pizza isn’t fast food — it’s a craft. A tribute to Naples and to everything that makes Italian cuisine so special: simplicity, patience, and the finest ingredients.',
     'footer.tagline': 'Neapolitan pizza, baked the traditional way. Fresh in Leusden every Friday.',
     'footer.links': 'Quick links',
     'footer.contact': 'Contact',
@@ -245,11 +271,24 @@ export function initLangToggle(onChange) {
 }
 
 export function getCart() {
+  let cart;
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_CART)) || {};
+    cart = JSON.parse(localStorage.getItem(STORAGE_CART)) || {};
   } catch {
-    return {};
+    cart = {};
   }
+
+  const validIds = new Set(PIZZAS.map((p) => p.id));
+  let hasStaleEntries = false;
+  for (const id of Object.keys(cart)) {
+    if (!validIds.has(id) || !(cart[id] > 0)) {
+      delete cart[id];
+      hasStaleEntries = true;
+    }
+  }
+  if (hasStaleEntries) setCart(cart);
+
+  return cart;
 }
 
 export function setCart(cart) {
