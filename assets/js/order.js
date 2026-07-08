@@ -1,4 +1,5 @@
 import { PIZZAS, getLang, initLangToggle, getCart, setCart, formatPrice, t } from './i18n.js';
+import { ORDERS_API_URL } from './config.js';
 
 function getNextFriday() {
   const now = new Date();
@@ -9,15 +10,41 @@ function getNextFriday() {
   return friday;
 }
 
+function toISODate(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 function buildTimeSlots() {
   const slots = [];
   for (let h = 17; h < 19; h++) {
-    for (let m = 0; m < 60; m += 15) {
+    for (let m = 0; m < 60; m += 10) {
       slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`);
     }
   }
   return slots;
 }
+
+async function fetchAvailability(isoDate) {
+  if (!ORDERS_API_URL) return [];
+  try {
+    const res = await fetch(`${ORDERS_API_URL}?action=availability&date=${isoDate}`);
+    const data = await res.json();
+    return data.success ? data.taken : [];
+  } catch (err) {
+    console.warn('Could not load slot availability, showing all slots as open.', err);
+    return [];
+  }
+}
+
+async function placeOrderRemote(payload) {
+  const res = await fetch(ORDERS_API_URL, { method: 'POST', body: JSON.stringify(payload) });
+  return res.json();
+}
+
+const pickupState = { isoDate: '', taken: [] };
 
 function renderPickupOptions(lang) {
   const select = document.getElementById('pickup-time');
@@ -31,9 +58,20 @@ function renderPickupOptions(lang) {
   document.getElementById('pickup-date-label').textContent = dateLabel + ',';
 
   const placeholder = lang === 'nl' ? 'Kies een tijd' : 'Choose a time';
+  const fullLabel = t('order.form.slotFull', lang);
+
   select.innerHTML =
     `<option value="" disabled selected>${placeholder}</option>` +
-    buildTimeSlots().map((s) => `<option value="${s}">${s}</option>`).join('');
+    buildTimeSlots().map((s) => {
+      const isTaken = pickupState.taken.includes(s);
+      return `<option value="${s}" ${isTaken ? 'disabled' : ''}>${s}${isTaken ? ` (${fullLabel})` : ''}</option>`;
+    }).join('');
+}
+
+async function refreshAvailability(lang) {
+  pickupState.isoDate = toISODate(getNextFriday());
+  pickupState.taken = await fetchAvailability(pickupState.isoDate);
+  renderPickupOptions(lang);
 }
 
 function renderSummary(lang) {
@@ -81,10 +119,23 @@ function setFieldError(field, message) {
   }
 }
 
+function setSubmitting(isSubmitting, lang) {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = isSubmitting;
+  btn.textContent = isSubmitting ? t('order.form.submitting', lang) : t('order.form.submit', lang);
+}
+
+function showConfirmation(ref) {
+  document.getElementById('confirm-ref').textContent = ref;
+  document.getElementById('order-view').classList.add('hidden');
+  document.getElementById('confirm-view').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function init() {
   let lang = getLang();
   renderSummary(lang);
-  renderPickupOptions(lang);
+  refreshAvailability(lang);
 
   initLangToggle((newLang) => {
     lang = newLang;
@@ -96,9 +147,13 @@ function init() {
   const nameField = document.getElementById('name');
   const phoneField = document.getElementById('phone');
   const pickupField = document.getElementById('pickup-time');
+  const notesField = document.getElementById('notes');
+  const submitError = document.getElementById('submit-error');
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    submitError.classList.add('hidden');
+
     const summary = renderSummary(lang);
     if (!summary) return;
 
@@ -132,13 +187,46 @@ function init() {
 
     if (!valid) return;
 
-    const orderRef = 'OL-' + Date.now().toString().slice(-6);
-    document.getElementById('confirm-ref').textContent = orderRef;
-    document.getElementById('order-view').classList.add('hidden');
-    document.getElementById('confirm-view').classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!ORDERS_API_URL) {
+      // Local-only demo mode: no backend configured yet.
+      showConfirmation('OL-' + Date.now().toString().slice(-6));
+      setCart({});
+      return;
+    }
 
-    setCart({});
+    setSubmitting(true, lang);
+
+    const itemsText = summary.entries
+      .map(([id, qty]) => `${qty}x ${PIZZAS.find((p) => p.id === id).name[lang]}`)
+      .join(', ');
+
+    try {
+      const result = await placeOrderRemote({
+        action: 'placeOrder',
+        pickupDate: pickupState.isoDate,
+        pickupTime: pickupField.value,
+        name: nameField.value.trim(),
+        phone: phoneValue,
+        items: itemsText,
+        total: formatPrice(summary.total),
+        notes: notesField.value.trim()
+      });
+
+      if (result.success) {
+        showConfirmation(result.ref);
+        setCart({});
+      } else if (result.error === 'slot_taken') {
+        setFieldError(pickupField, t('order.form.slotTaken', lang));
+        await refreshAvailability(lang);
+      } else {
+        submitError.classList.remove('hidden');
+      }
+    } catch (err) {
+      console.error('Order submission failed', err);
+      submitError.classList.remove('hidden');
+    } finally {
+      setSubmitting(false, lang);
+    }
   });
 }
 

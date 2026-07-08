@@ -126,8 +126,10 @@
               data-i18n-placeholder="order.form.notesPlaceholder" placeholder="Allergieën, opmerkingen…"></textarea>
           </div>
 
-          <button type="submit"
-            class="w-full h-12 rounded-full bg-terracotta text-white font-semibold shadow-btn hover:bg-terracotta-deep hover:-translate-y-0.5 transition-[transform,background-color] duration-200"
+          <p id="submit-error" class="text-sm text-terracotta text-center hidden" data-i18n="order.form.submitError"></p>
+
+          <button type="submit" id="submit-btn"
+            class="w-full h-12 rounded-full bg-terracotta text-white font-semibold shadow-btn hover:bg-terracotta-deep hover:-translate-y-0.5 transition-[transform,background-color] duration-200 disabled:opacity-60 disabled:pointer-events-none"
             data-i18n="order.form.submit">Bestelling plaatsen</button>
         </form>
       </div>
