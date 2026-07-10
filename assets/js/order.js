@@ -145,7 +145,10 @@ function init() {
 
   const form = document.getElementById('order-form');
   const nameField = document.getElementById('name');
+  const emailField = document.getElementById('email');
   const phoneField = document.getElementById('phone');
+  const postcodeField = document.getElementById('postcode');
+  const houseNumberField = document.getElementById('house-number');
   const pickupField = document.getElementById('pickup-time');
   const notesField = document.getElementById('notes');
   const submitError = document.getElementById('submit-error');
@@ -164,6 +167,18 @@ function init() {
       valid = false;
     } else {
       setFieldError(nameField, null);
+    }
+
+    const emailValue = emailField.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailValue) {
+      setFieldError(emailField, t('order.form.required', lang));
+      valid = false;
+    } else if (!emailPattern.test(emailValue)) {
+      setFieldError(emailField, t('order.form.invalidEmail', lang));
+      valid = false;
+    } else {
+      setFieldError(emailField, null);
     }
 
     const phoneValue = phoneField.value.trim();
@@ -206,7 +221,11 @@ function init() {
         pickupDate: pickupState.isoDate,
         pickupTime: pickupField.value,
         name: nameField.value.trim(),
+        email: emailValue,
         phone: phoneValue,
+        postcode: postcodeField.value.trim(),
+        houseNumber: houseNumberField.value.trim(),
+        payment: document.querySelector('input[name="payment"]:checked').value,
         items: itemsText,
         total: formatPrice(summary.total),
         notes: notesField.value.trim()

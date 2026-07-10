@@ -100,11 +100,48 @@
           </div>
 
           <div>
+            <label for="email" class="block text-sm font-semibold mb-1.5" data-i18n="order.form.email">E-mailadres</label>
+            <input id="email" name="email" type="email" autocomplete="email"
+              class="w-full h-11 rounded-lg border border-ink/15 px-3.5 text-sm focus:border-terracotta transition-colors duration-150"
+              data-i18n-placeholder="order.form.emailPlaceholder" placeholder="naam@voorbeeld.nl">
+            <p id="email-error" class="mt-1.5 text-xs text-terracotta hidden"></p>
+          </div>
+
+          <div>
             <label for="phone" class="block text-sm font-semibold mb-1.5" data-i18n="order.form.phone">Telefoonnummer</label>
             <input id="phone" name="phone" type="tel" autocomplete="tel"
               class="w-full h-11 rounded-lg border border-ink/15 px-3.5 text-sm focus:border-terracotta transition-colors duration-150"
               data-i18n-placeholder="order.form.phonePlaceholder" placeholder="06 12 34 56 78">
             <p id="phone-error" class="mt-1.5 text-xs text-terracotta hidden"></p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="postcode" class="block text-sm font-semibold mb-1.5" data-i18n="order.form.postcode">Postcode</label>
+              <input id="postcode" name="postcode" type="text" autocomplete="postal-code"
+                class="w-full h-11 rounded-lg border border-ink/15 px-3.5 text-sm focus:border-terracotta transition-colors duration-150"
+                data-i18n-placeholder="order.form.postcodePlaceholder" placeholder="1234 AB">
+            </div>
+            <div>
+              <label for="house-number" class="block text-sm font-semibold mb-1.5" data-i18n="order.form.houseNumber">Huisnummer</label>
+              <input id="house-number" name="house-number" type="text" autocomplete="address-line2"
+                class="w-full h-11 rounded-lg border border-ink/15 px-3.5 text-sm focus:border-terracotta transition-colors duration-150"
+                data-i18n-placeholder="order.form.houseNumberPlaceholder" placeholder="12">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-1.5" data-i18n="order.form.payment">Betalingswijze</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="flex items-center justify-center h-11 rounded-lg border border-ink/15 text-sm font-medium cursor-pointer transition-colors duration-150 has-[:checked]:bg-terracotta has-[:checked]:text-white has-[:checked]:border-terracotta">
+                <input type="radio" name="payment" value="contant" checked class="sr-only">
+                <span data-i18n="order.form.paymentCash">Contant</span>
+              </label>
+              <label class="flex items-center justify-center h-11 rounded-lg border border-ink/15 text-sm font-medium cursor-pointer transition-colors duration-150 has-[:checked]:bg-terracotta has-[:checked]:text-white has-[:checked]:border-terracotta">
+                <input type="radio" name="payment" value="pin" class="sr-only">
+                <span data-i18n="order.form.paymentCard">Pin</span>
+              </label>
+            </div>
           </div>
 
           <div>
