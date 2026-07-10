@@ -89,6 +89,14 @@ body {
   50% { transform: scale(1.04); }
 }
 
+/* FAQ accordion */
+.faq-item summary {
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
 /* quantity stepper */
 .qty-btn {
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, color 0.15s ease;
